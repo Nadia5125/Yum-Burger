@@ -1,0 +1,53 @@
+<form class="burger-form">
+    <div class="form-group ">
+        <label for="burger">
+            <h4 class="text">Enter the name of the burger you want</h4>
+        </label>
+        <input type="text" class="form-control" id="burgerOrder" name="burger">
+    </div>
+    <button type="submit" class="btn btn-primary" id="btnOrderBurger">Order Here!</button>
+</form>
+<br>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <h5 class="card-header text-center">Orders</h5>
+            <div class="card-body">
+                {{#each burgers}}
+                {{#unless devoured}}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">#{{this.id}}: {{this.burger_name}}</h5>
+                        <p class="card-text">Your burger is ready to eat!</p>
+                        <button type="button" class="devourBurger btn btn-warning devour-button" id="btnDevour"
+                            data-id="{{this.id}}" data-newDevoured="{{devour}}">Devour it!</button>
+                    </div>
+                </div>
+                <hr>
+                {{/unless}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <h5 class="card-header text-center">Devoured</h5>
+            <div class="card-body">
+                {{#each burgers}}
+                {{#if devoured}}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">#{{this.id}}: {{this.burger_name}}</h5>
+                        <p class="card-text">That was YUM!</p>
+                        <button class="delete-burger btn btn-danger" data-id="{{this.id}}"><i
+                                class="fa fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                <hr>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</div>
